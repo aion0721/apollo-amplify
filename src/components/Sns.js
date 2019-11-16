@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { Button } from "@material-ui/core";
 
 //Chart
 import {
@@ -13,6 +14,9 @@ import {
 } from "recharts";
 
 import { PieChart, Pie } from "recharts";
+
+import { API, graphqlOperation } from "aws-amplify";
+import { getTodo, listTodos } from "../graphql/queries";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,11 +49,26 @@ const division = [
 
 function Top() {
   const classes = useStyles();
+  const [data, setData] = useState();
+  useEffect(() => {
+    const f = async () => {
+      try {
+        const data = await API.graphql(graphqlOperation(listTodos));
+        console.log("GetGraphqlData:", data);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    f();
+  }, []);
 
   return (
     <div className={classes.root}>
       <div className={classes.contents}>
         <h1>TOP PAGE!!!!!!!!!!</h1>
+        <Button onClick={() => alert(API.graphql(graphqlOperation(listTodos)))}>
+          aaa
+        </Button>
         <h2>取得者年次分布</h2>
         <BarChart width={500} height={300} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
