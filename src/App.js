@@ -21,10 +21,14 @@ import awsconfig from "./aws-exports";
 import { withAuthenticator } from "aws-amplify-react";
 import { Auth } from "aws-amplify";
 
+import { ServiceWorker } from "aws-amplify";
+
 // serviceWorker
-import { register } from "./serviceWorker";
+//import { register } from "./serviceWorker";
 
 Amplify.configure(awsconfig);
+
+const serviceWorker = new ServiceWorker();
 
 const signUpConfig = {
   header: "Sign Up for Apollo",
@@ -72,6 +76,7 @@ const logOutApp = () => {
     .catch(err => console.log(err));
 };
 
-register();
+serviceWorker.register("/service-worker.js", "/");
+//register();
 
 export default withAuthenticator(App, { signUpConfig });
