@@ -11,7 +11,7 @@ import Logout from "./components/pages/Logout";
 import Target from "./components/Target";
 import Sns from "./components/Sns";
 import Notification from "./components/Notification";
-import Auth from "./Auth";
+//import Auth from "./Auth";
 
 import Header from "./components/organisms/Header";
 import Footer from "./components/organisms/Footer";
@@ -19,11 +19,33 @@ import Footer from "./components/organisms/Footer";
 import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
 import { withAuthenticator } from "aws-amplify-react";
+import { Auth } from "aws-amplify";
+
+// serviceWorker
+import { register } from "./serviceWorker";
 
 Amplify.configure(awsconfig);
 
-// serviceWorker
-//import { register } from "./serviceWorker";
+const signUpConfig = {
+  header: "Sign Up for Apollo",
+  hideAllDefaults: true,
+  signUpFields: [
+    {
+      label: "UserId (MailAddress)",
+      key: "username",
+      required: "true",
+      displayOrder: 1,
+      type: "string"
+    },
+    {
+      label: "Password",
+      key: "password",
+      required: "true",
+      displayOrder: 2,
+      type: "password"
+    }
+  ]
+};
 
 function App() {
   return (
@@ -31,7 +53,7 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" component={rootRedirect} />
-        <Route exact path="/logout" component={Logout} />
+        <Route exact path="/logout" component={logOutApp} />
         <Route exact path="/target" component={Target} />
         <Route exact path="/sns" component={Sns} />
         <Route exact path="/notification" component={Notification} />
@@ -44,6 +66,12 @@ function App() {
 
 const rootRedirect = () => <Redirect to={"/target"} />;
 
-//register();
+const logOutApp = () => {
+  Auth.signOut()
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+};
 
-export default withAuthenticator(App, true);
+register();
+
+export default withAuthenticator(App, { signUpConfig });
