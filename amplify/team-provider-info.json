@@ -1,0 +1,19 @@
+{
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-apollo-amplify-prod-132743-authRole",
+            "UnauthRoleArn": "arn:aws:iam::762098922691:role/amplify-apollo-amplify-prod-132743-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::762098922691:role/amplify-apollo-amplify-prod-132743-authRole",
+            "Region": "ap-northeast-1",
+            "DeploymentBucketName": "amplify-apollo-amplify-prod-132743-deployment",
+            "UnauthRoleName": "amplify-apollo-amplify-prod-132743-unauthRole",
+            "StackName": "amplify-apollo-amplify-prod-132743",
+            "StackId": "arn:aws:cloudformation:ap-northeast-1:762098922691:stack/amplify-apollo-amplify-prod-132743/7076d9e0-0829-11ea-b0db-06d1721e128e"
+        },
+        "categories": {
+            "auth": {
+                "apolloamplify60d8e9c9": {}
+            }
+        }
+    }
+}
