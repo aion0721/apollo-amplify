@@ -13,6 +13,7 @@ import {
 } from "recharts";
 
 import { PieChart, Pie } from "recharts";
+import Card from "./molecules/Card";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,6 +44,10 @@ const division = [
   { name: "その他", 取得者: 50 }
 ];
 
+function showTodo() {
+  return alert("a");
+}
+
 function Top() {
   const classes = useStyles();
 
@@ -51,6 +56,7 @@ function Top() {
       <div className={classes.contents}>
         <h1>TOP PAGE!!!!!!!!!!</h1>
         <h2>取得者年次分布</h2>
+        <Card content="a" />
         <BarChart width={500} height={300} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />

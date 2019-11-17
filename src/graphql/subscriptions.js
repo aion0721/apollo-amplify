@@ -6,6 +6,7 @@ export const onCreateTodo = `subscription OnCreateTodo {
     id
     name
     description
+    author
   }
 }
 `;
@@ -14,6 +15,7 @@ export const onUpdateTodo = `subscription OnUpdateTodo {
     id
     name
     description
+    author
   }
 }
 `;
@@ -22,6 +24,139 @@ export const onDeleteTodo = `subscription OnDeleteTodo {
     id
     name
     description
+    author
+  }
+}
+`;
+export const onCreateUserinformation = `subscription OnCreateUserinformation {
+  onCreateUserinformation {
+    userid
+    name
+    joinYear
+    organization
+    interestArea1
+    interestArea2
+    interestArea3
+    profile
+  }
+}
+`;
+export const onUpdateUserinformation = `subscription OnUpdateUserinformation {
+  onUpdateUserinformation {
+    userid
+    name
+    joinYear
+    organization
+    interestArea1
+    interestArea2
+    interestArea3
+    profile
+  }
+}
+`;
+export const onDeleteUserinformation = `subscription OnDeleteUserinformation {
+  onDeleteUserinformation {
+    userid
+    name
+    joinYear
+    organization
+    interestArea1
+    interestArea2
+    interestArea3
+    profile
+  }
+}
+`;
+export const onCreateGoalinformation = `subscription OnCreateGoalinformation {
+  onCreateGoalinformation {
+    userid
+    goalExamId
+    goalTestDate
+    objectiveStudyTime
+    peformanceStudyTimeWeek
+    performanceStudyTimeAll
+  }
+}
+`;
+export const onUpdateGoalinformation = `subscription OnUpdateGoalinformation {
+  onUpdateGoalinformation {
+    userid
+    goalExamId
+    goalTestDate
+    objectiveStudyTime
+    peformanceStudyTimeWeek
+    performanceStudyTimeAll
+  }
+}
+`;
+export const onDeleteGoalinformation = `subscription OnDeleteGoalinformation {
+  onDeleteGoalinformation {
+    userid
+    goalExamId
+    goalTestDate
+    objectiveStudyTime
+    peformanceStudyTimeWeek
+    performanceStudyTimeAll
+  }
+}
+`;
+export const onCreateStudiedinformation = `subscription OnCreateStudiedinformation {
+  onCreateStudiedinformation {
+    userid
+    studiedExamId
+    studiedTestDate
+    Score
+    result
+    referenceBook
+    passRecord
+    performanceStudyTimeAll
+  }
+}
+`;
+export const onUpdateStudiedinformation = `subscription OnUpdateStudiedinformation {
+  onUpdateStudiedinformation {
+    userid
+    studiedExamId
+    studiedTestDate
+    Score
+    result
+    referenceBook
+    passRecord
+    performanceStudyTimeAll
+  }
+}
+`;
+export const onDeleteStudiedinformation = `subscription OnDeleteStudiedinformation {
+  onDeleteStudiedinformation {
+    userid
+    studiedExamId
+    studiedTestDate
+    Score
+    result
+    referenceBook
+    passRecord
+    performanceStudyTimeAll
+  }
+}
+`;
+export const onCreateExam = `subscription OnCreateExam {
+  onCreateExam {
+    examId
+    examName
+  }
+}
+`;
+export const onUpdateExam = `subscription OnUpdateExam {
+  onUpdateExam {
+    examId
+    examName
+  }
+}
+`;
+export const onDeleteExam = `subscription OnDeleteExam {
+  onDeleteExam {
+    examId
+    examName
   }
 }
 `;
