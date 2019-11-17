@@ -2,4 +2,41 @@ type Todo @model {
   id: ID!
   name: String!
   description: String
+  author: String
+}
+
+type userinformation @model {
+  userid: ID!
+  name: String!
+  joinYear: String!
+  organization: String!
+  interestArea1: String!
+  interestArea2: String
+  interestArea3: String
+  profile: String!
+}
+
+type goalinformation @model {
+  userid: ID!
+  goalExamId: Int!
+  goalTestDate: String!
+  objectiveStudyTime: Int!
+  peformanceStudyTimeWeek: Int!
+  performanceStudyTimeAll: Int!
+}
+
+type studiedinformation @model {
+  userid: ID!
+  studiedExamId: Int!
+  studiedTestDate: String!
+  Score: String!
+  result: String!
+  referenceBook: String
+  passRecord: String
+  performanceStudyTimeAll: Int!
+}
+
+type exam @model {
+  examId: Int!
+  examName: String!
 }

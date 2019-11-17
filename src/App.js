@@ -6,8 +6,6 @@ import {
   Redirect
 } from "react-router-dom";
 
-import Login from "./components/pages/Login";
-import Logout from "./components/pages/Logout";
 import Target from "./components/Target";
 import Sns from "./components/Sns";
 import Notification from "./components/Notification";
@@ -20,6 +18,8 @@ import Amplify from "aws-amplify";
 import awsconfig from "./aws-exports";
 import { withAuthenticator } from "aws-amplify-react";
 import { Auth } from "aws-amplify";
+
+import tst from "./components/tst";
 
 import { ServiceWorker } from "aws-amplify";
 
@@ -60,6 +60,7 @@ function App() {
         <Route exact path="/logout" component={logOutApp} />
         <Route exact path="/target" component={Target} />
         <Route exact path="/sns" component={Sns} />
+        <Route exact path="/tst" component={tst} />
         <Route exact path="/notification" component={Notification} />
         <Redirect from="/" to="/target" />
       </Switch>
