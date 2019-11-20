@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 
-import { API, graphqlOperation } from "aws-amplify";
+import { Auth, API, graphqlOperation } from "aws-amplify";
 import { getTodo, listTodos } from "../graphql/queries";
 import Card from "./molecules/Card";
 
@@ -61,7 +61,13 @@ function Top() {
       <ul>
         {todos.map(todo => (
           <li key={todo.id}>
-            {todo.name} ({todo.id})
+            ID:{todo.id}
+            <br />
+            Name:{todo.name}
+            <br />
+            Author:{todo.author}
+            <br />
+            Description:{todo.description}
           </li>
         ))}
       </ul>
@@ -81,6 +87,7 @@ function Top() {
             return <ListView todos={listTodos.items} />;
           }}
         </Connect>
+        <button onClick={() => console.log(Auth.user.username)}>api</button>
         <h2>取得者年次分布</h2>
         <h2>取得者エリア分布</h2>
         <p> Contents. </p>

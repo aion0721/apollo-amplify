@@ -1,6 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
+// Amplify Mutations Sample
+import Amplify, { API, graphqlOperation } from "aws-amplify";
+import * as mutations from "./../graphql/mutations";
+
 //Chart
 import {
   BarChart,
@@ -43,6 +47,21 @@ const division = [
   { name: "その他", 取得者: 50 }
 ];
 
+const todoDetails = {
+  id: "4",
+  name: "tst3",
+  description: "dscrptn",
+  author: "ath"
+};
+
+async function sampleMutation() {
+  await console.log(todoDetails);
+  const newTodo = await API.graphql(
+    graphqlOperation(mutations.createTodo, { input: todoDetails })
+  );
+  await console.log(newTodo);
+}
+
 function Top() {
   const classes = useStyles();
 
@@ -72,6 +91,7 @@ function Top() {
           />
           <Tooltip />
         </PieChart>
+        <button onClick={() => sampleMutation()}>sampleMutation</button>
         <p> Contents. </p>
         <p> Contents. </p>
         <p> Contents. </p>
