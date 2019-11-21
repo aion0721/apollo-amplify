@@ -70,7 +70,7 @@ export const onDeleteUserinformation = `subscription OnDeleteUserinformation {
 export const onCreateGoalinformation = `subscription OnCreateGoalinformation {
   onCreateGoalinformation {
     userid
-    goalExamId
+    goalName
     goalTestDate
     objectiveStudyTime
     peformanceStudyTimeWeek
@@ -81,7 +81,7 @@ export const onCreateGoalinformation = `subscription OnCreateGoalinformation {
 export const onUpdateGoalinformation = `subscription OnUpdateGoalinformation {
   onUpdateGoalinformation {
     userid
-    goalExamId
+    goalName
     goalTestDate
     objectiveStudyTime
     peformanceStudyTimeWeek
@@ -92,7 +92,7 @@ export const onUpdateGoalinformation = `subscription OnUpdateGoalinformation {
 export const onDeleteGoalinformation = `subscription OnDeleteGoalinformation {
   onDeleteGoalinformation {
     userid
-    goalExamId
+    goalName
     goalTestDate
     objectiveStudyTime
     peformanceStudyTimeWeek

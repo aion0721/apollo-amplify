@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
@@ -6,6 +6,11 @@ import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import Container from "@material-ui/core/Container";
 import NativeSelect from "@material-ui/core/NativeSelect";
+
+import { Auth, API, graphqlOperation } from "aws-amplify";
+import * as mutations from "./../../graphql/mutations";
+
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -33,8 +38,26 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+async function sampleMutation(userid, targetName, targetDate, targetTime) {
+  const inputData = {
+    userid: userid,
+    goalName: targetName,
+    goalTestDate: targetDate,
+    objectiveStudyTime: targetTime
+  };
+
+  await console.log(inputData);
+  const newTodo = await API.graphql(
+    graphqlOperation(mutations.createGoalinformation, { input: inputData })
+  );
+}
+
 export default function DatePickers() {
   const classes = useStyles();
+  const [targetName, setTargetName] = useState();
+  const [targetDate, setTargetDate] = useState("");
+  const [targetTime, setTargetTime] = useState();
+  const history = useHistory();
 
   return (
     <Container className={classes.container}>
@@ -46,11 +69,15 @@ export default function DatePickers() {
               name: "age",
               id: "age-native-helper"
             }}
+            onChange={event => {
+              setTargetName(event.target.value);
+            }}
+            value={targetName}
           >
             <option value="" />
-            <option value={10}>基本情報処理技術者試験</option>
-            <option value={20}>応用情報処理技術者試験</option>
-            <option value={30}>ITストラテジスト試験</option>
+            <option value={"FE0"}>基本情報処理技術者試験</option>
+            <option value={"AE0"}>応用情報処理技術者試験</option>
+            <option value={"ITS"}>ITストラテジスト試験</option>
           </NativeSelect>
         </FormControl>
         <TextField
@@ -58,12 +85,15 @@ export default function DatePickers() {
           label="受験予定日"
           style={{ margin: 8 }}
           type="date"
-          defaultValue="2019-01-01"
           fullWidth
           margin="normal"
           InputLabelProps={{
             shrink: true
           }}
+          onChange={event => {
+            setTargetDate(event.target.value);
+          }}
+          value={targetDate}
         />
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="age-native-helper">目標勉強時間</InputLabel>
@@ -72,6 +102,10 @@ export default function DatePickers() {
               name: "age",
               id: "age-native-helper"
             }}
+            onChange={event => {
+              setTargetTime(event.target.value);
+            }}
+            value={targetTime}
           >
             <option value="" />
             <option value={1}>週1時間</option>
@@ -87,7 +121,21 @@ export default function DatePickers() {
           </NativeSelect>
         </FormControl>
         <br></br>
-        <Button variant="contained" color="primary" className={classes.button}>
+        <Button
+          variant="contained"
+          color="primary"
+          className={classes.button}
+          onClick={() => {
+            sampleMutation(
+              Auth.user.username,
+              targetName,
+              targetDate,
+              targetTime
+            );
+            alert("登録しました!!");
+            history.push("./mokuhyoukannri");
+          }}
+        >
           目標を追加する
         </Button>
       </div>

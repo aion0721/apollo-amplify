@@ -17,12 +17,12 @@ type userinformation @model {
 }
 
 type goalinformation @model {
-  userid: ID!
-  goalExamId: Int!
+  userid: String!
+  goalName: String!
   goalTestDate: String!
   objectiveStudyTime: Int!
-  peformanceStudyTimeWeek: Int!
-  performanceStudyTimeAll: Int!
+  peformanceStudyTimeWeek: Int
+  performanceStudyTimeAll: Int
 }
 
 type studiedinformation @model {

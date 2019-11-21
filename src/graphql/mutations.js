@@ -70,7 +70,7 @@ export const deleteUserinformation = `mutation DeleteUserinformation($input: Del
 export const createGoalinformation = `mutation CreateGoalinformation($input: CreateGoalinformationInput!) {
   createGoalinformation(input: $input) {
     userid
-    goalExamId
+    goalName
     goalTestDate
     objectiveStudyTime
     peformanceStudyTimeWeek
@@ -81,7 +81,7 @@ export const createGoalinformation = `mutation CreateGoalinformation($input: Cre
 export const updateGoalinformation = `mutation UpdateGoalinformation($input: UpdateGoalinformationInput!) {
   updateGoalinformation(input: $input) {
     userid
-    goalExamId
+    goalName
     goalTestDate
     objectiveStudyTime
     peformanceStudyTimeWeek
@@ -92,7 +92,7 @@ export const updateGoalinformation = `mutation UpdateGoalinformation($input: Upd
 export const deleteGoalinformation = `mutation DeleteGoalinformation($input: DeleteGoalinformationInput!) {
   deleteGoalinformation(input: $input) {
     userid
-    goalExamId
+    goalName
     goalTestDate
     objectiveStudyTime
     peformanceStudyTimeWeek

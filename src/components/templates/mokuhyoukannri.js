@@ -13,6 +13,12 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Divider } from "@material-ui/core";
 
+import Amplify, { Auth, graphqlOperation } from "aws-amplify";
+import { Connect } from "aws-amplify-react";
+import * as queries from "../../graphql/queries";
+import awsconfig from "../../aws-exports";
+Amplify.configure(awsconfig);
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -67,6 +73,33 @@ const useStyles2 = makeStyles({
   }
 });
 
+function ListView({ targets }) {
+  const classes2 = useStyles2();
+  const history = useHistory();
+  return (
+    <div>
+      {targets.map(target => (
+        <Card className={classes2.card}>
+          <CardContent>
+            <Typography
+              className={classes2.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              <ListItem
+                button
+                onClick={event => history.push("/sinncyokukannri")}
+              >
+                <ListItemText primary={target.goalName} />
+              </ListItem>
+            </Typography>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
 export default function SimpleTabs() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
@@ -92,22 +125,23 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Card className={classes2.card}>
-          <CardContent>
-            <Typography
-              className={classes2.title}
-              color="textSecondary"
-              gutterBottom
-            >
-              <ListItem
-                button
-                onClick={event => history.push("/sinncyokukannri")}
-              >
-                <ListItemText primary="LPIC level2" />
-              </ListItem>
-            </Typography>
-          </CardContent>
-        </Card>
+        <Connect query={graphqlOperation(queries.listGoalinformations)}>
+          {({ data: { listGoalinformations }, loading, errors }) => {
+            console.log("err", errors);
+            console.log("data", { listGoalinformations });
+            console.log("loading", loading);
+            errors = false;
+            if (errors) return <h3>Error</h3>;
+            if (loading || !listGoalinformations) return <h3>Loading...</h3>;
+            return (
+              <div>
+                {console.log("alert")}
+                <ListView targets={listGoalinformations.items} />
+              </div>
+            );
+          }}
+        </Connect>
+
         <Divider />
         <Card className={classes2.card}>
           <CardContent>

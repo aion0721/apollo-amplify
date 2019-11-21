@@ -62,7 +62,7 @@ export const listUserinformations = `query ListUserinformations(
 export const getGoalinformation = `query GetGoalinformation($id: ID!) {
   getGoalinformation(id: $id) {
     userid
-    goalExamId
+    goalName
     goalTestDate
     objectiveStudyTime
     peformanceStudyTimeWeek
@@ -78,7 +78,7 @@ export const listGoalinformations = `query ListGoalinformations(
   listGoalinformations(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       userid
-      goalExamId
+      goalName
       goalTestDate
       objectiveStudyTime
       peformanceStudyTimeWeek
