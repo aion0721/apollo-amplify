@@ -165,6 +165,7 @@ export const onDeleteExam = `subscription OnDeleteExam {
 `;
 export const onCreateNotification = `subscription OnCreateNotification {
   onCreateNotification {
+    id
     notificationId
     notificationUserId
     notificationCategory
@@ -174,6 +175,7 @@ export const onCreateNotification = `subscription OnCreateNotification {
 `;
 export const onUpdateNotification = `subscription OnUpdateNotification {
   onUpdateNotification {
+    id
     notificationId
     notificationUserId
     notificationCategory
@@ -183,6 +185,7 @@ export const onUpdateNotification = `subscription OnUpdateNotification {
 `;
 export const onDeleteNotification = `subscription OnDeleteNotification {
   onDeleteNotification {
+    id
     notificationId
     notificationUserId
     notificationCategory
@@ -192,7 +195,7 @@ export const onDeleteNotification = `subscription OnDeleteNotification {
 `;
 export const onCreateSns = `subscription OnCreateSns {
   onCreateSns {
-    snsId
+    id
     snsParentsId
     snsTitle
     snsContents
@@ -202,7 +205,7 @@ export const onCreateSns = `subscription OnCreateSns {
 `;
 export const onUpdateSns = `subscription OnUpdateSns {
   onUpdateSns {
-    snsId
+    id
     snsParentsId
     snsTitle
     snsContents
@@ -212,7 +215,7 @@ export const onUpdateSns = `subscription OnUpdateSns {
 `;
 export const onDeleteSns = `subscription OnDeleteSns {
   onDeleteSns {
-    snsId
+    id
     snsParentsId
     snsTitle
     snsContents

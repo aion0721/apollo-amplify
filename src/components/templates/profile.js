@@ -75,9 +75,9 @@ export default function DatePickers() {
             value={targetName}
           >
             <option value="" />
-            <option value={"FE0"}>基本情報処理技術者試験</option>
-            <option value={"AE0"}>応用情報処理技術者試験</option>
-            <option value={"ITS"}>ITストラテジスト試験</option>
+            <option value={"基本情報技術者試験"}>基本情報処理技術者試験</option>
+            <option value={"応用情報技術者試験"}>応用情報処理技術者試験</option>
+            <option value={"ITストラテジスト試験"}>ITストラテジスト試験</option>
           </NativeSelect>
         </FormControl>
         <TextField

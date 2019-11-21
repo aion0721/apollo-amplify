@@ -165,6 +165,7 @@ export const deleteExam = `mutation DeleteExam($input: DeleteExamInput!) {
 `;
 export const createNotification = `mutation CreateNotification($input: CreateNotificationInput!) {
   createNotification(input: $input) {
+    id
     notificationId
     notificationUserId
     notificationCategory
@@ -174,6 +175,7 @@ export const createNotification = `mutation CreateNotification($input: CreateNot
 `;
 export const updateNotification = `mutation UpdateNotification($input: UpdateNotificationInput!) {
   updateNotification(input: $input) {
+    id
     notificationId
     notificationUserId
     notificationCategory
@@ -183,6 +185,7 @@ export const updateNotification = `mutation UpdateNotification($input: UpdateNot
 `;
 export const deleteNotification = `mutation DeleteNotification($input: DeleteNotificationInput!) {
   deleteNotification(input: $input) {
+    id
     notificationId
     notificationUserId
     notificationCategory
@@ -192,7 +195,7 @@ export const deleteNotification = `mutation DeleteNotification($input: DeleteNot
 `;
 export const createSns = `mutation CreateSns($input: CreateSnsInput!) {
   createSns(input: $input) {
-    snsId
+    id
     snsParentsId
     snsTitle
     snsContents
@@ -202,7 +205,7 @@ export const createSns = `mutation CreateSns($input: CreateSnsInput!) {
 `;
 export const updateSns = `mutation UpdateSns($input: UpdateSnsInput!) {
   updateSns(input: $input) {
-    snsId
+    id
     snsParentsId
     snsTitle
     snsContents
@@ -212,7 +215,7 @@ export const updateSns = `mutation UpdateSns($input: UpdateSnsInput!) {
 `;
 export const deleteSns = `mutation DeleteSns($input: DeleteSnsInput!) {
   deleteSns(input: $input) {
-    snsId
+    id
     snsParentsId
     snsTitle
     snsContents
