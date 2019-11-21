@@ -40,3 +40,17 @@ type exam @model {
   examId: Int!
   examName: String!
 }
+
+type notification @motel {
+  notificationId: ID!
+  notificationUserId: String!
+  notificationCategory: String!
+  notificationContents: String!
+}
+
+type sns @motel {
+  snsId: ID!
+  snsParentsId: String!
+  snsContents: String!
+  snsAuthor: String!
+}
