@@ -88,7 +88,7 @@ function ListView({ targets }) {
             >
               <ListItem
                 button
-                onClick={event => history.push("/sinncyokukannri")}
+                onClick={() => history.push("/sinncyokukannri/" + target.id)}
               >
                 <ListItemText primary={target.goalName} />
               </ListItem>

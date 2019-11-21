@@ -69,6 +69,7 @@ export const deleteUserinformation = `mutation DeleteUserinformation($input: Del
 `;
 export const createGoalinformation = `mutation CreateGoalinformation($input: CreateGoalinformationInput!) {
   createGoalinformation(input: $input) {
+    id
     userid
     goalName
     goalTestDate
@@ -80,6 +81,7 @@ export const createGoalinformation = `mutation CreateGoalinformation($input: Cre
 `;
 export const updateGoalinformation = `mutation UpdateGoalinformation($input: UpdateGoalinformationInput!) {
   updateGoalinformation(input: $input) {
+    id
     userid
     goalName
     goalTestDate
@@ -91,6 +93,7 @@ export const updateGoalinformation = `mutation UpdateGoalinformation($input: Upd
 `;
 export const deleteGoalinformation = `mutation DeleteGoalinformation($input: DeleteGoalinformationInput!) {
   deleteGoalinformation(input: $input) {
+    id
     userid
     goalName
     goalTestDate
@@ -157,6 +160,63 @@ export const deleteExam = `mutation DeleteExam($input: DeleteExamInput!) {
   deleteExam(input: $input) {
     examId
     examName
+  }
+}
+`;
+export const createNotification = `mutation CreateNotification($input: CreateNotificationInput!) {
+  createNotification(input: $input) {
+    notificationId
+    notificationUserId
+    notificationCategory
+    notificationContents
+  }
+}
+`;
+export const updateNotification = `mutation UpdateNotification($input: UpdateNotificationInput!) {
+  updateNotification(input: $input) {
+    notificationId
+    notificationUserId
+    notificationCategory
+    notificationContents
+  }
+}
+`;
+export const deleteNotification = `mutation DeleteNotification($input: DeleteNotificationInput!) {
+  deleteNotification(input: $input) {
+    notificationId
+    notificationUserId
+    notificationCategory
+    notificationContents
+  }
+}
+`;
+export const createSns = `mutation CreateSns($input: CreateSnsInput!) {
+  createSns(input: $input) {
+    snsId
+    snsParentsId
+    snsTitle
+    snsContents
+    snsAuthor
+  }
+}
+`;
+export const updateSns = `mutation UpdateSns($input: UpdateSnsInput!) {
+  updateSns(input: $input) {
+    snsId
+    snsParentsId
+    snsTitle
+    snsContents
+    snsAuthor
+  }
+}
+`;
+export const deleteSns = `mutation DeleteSns($input: DeleteSnsInput!) {
+  deleteSns(input: $input) {
+    snsId
+    snsParentsId
+    snsTitle
+    snsContents
+    snsAuthor
   }
 }
 `;

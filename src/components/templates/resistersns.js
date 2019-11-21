@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import { deepPurple } from "@material-ui/core/colors";
@@ -8,6 +8,9 @@ import TextField from "@material-ui/core/TextField";
 import { useHistory } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 
+import { Auth, API, graphqlOperation } from "aws-amplify";
+import * as mutations from "./../../graphql/mutations";
+
 const useStyles = makeStyles({
   purpleAvatar: {
     margin: 10,
@@ -16,9 +19,26 @@ const useStyles = makeStyles({
   }
 });
 
+async function sampleMutation(username, title, contents) {
+  const inputData = {
+    snsParentsId: "-",
+    snsTitle: title,
+    snsContents: contents,
+    snsAuthor: username
+  };
+
+  await console.log(inputData);
+  const newTodo = await API.graphql(
+    graphqlOperation(mutations.createSns, { input: inputData })
+  );
+  await console.log(newTodo);
+}
+
 export default function LetterAvatars() {
   const classes = useStyles();
   const history = useHistory();
+  const [title, setTitle] = useState();
+  const [contents, setContents] = useState();
 
   return (
     <div>
@@ -34,6 +54,10 @@ export default function LetterAvatars() {
         defaultValue=""
         className={classes.textField}
         margin="normal"
+        value={title}
+        onChange={event => {
+          setTitle(event.target.value);
+        }}
         variant="outlined"
       />
       <br></br>
@@ -47,14 +71,23 @@ export default function LetterAvatars() {
         className={classes.textField}
         margin="normal"
         variant="outlined"
+        value={contents}
+        onChange={event => {
+          setContents(event.target.value);
+        }}
       />
       <br></br>
-      <ListItem button onClick={event => history.push("/snsOverview")}>
+      <ListItem button>
         <Button
           variant="contained"
           size="large"
           color="primary"
           className={classes.margin}
+          onClick={() => {
+            sampleMutation(Auth.user.storage.name, title, contents);
+            alert("登録しました!!");
+            history.push("./snsOverview");
+          }}
         >
           スレッドを投稿する
         </Button>

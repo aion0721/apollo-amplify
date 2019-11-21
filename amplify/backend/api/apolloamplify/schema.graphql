@@ -17,6 +17,7 @@ type userinformation @model {
 }
 
 type goalinformation @model {
+  id: ID
   userid: String!
   goalName: String!
   goalTestDate: String!
@@ -41,16 +42,18 @@ type exam @model {
   examName: String!
 }
 
-type notification @motel {
-  notificationId: ID!
+type notification @model {
+  id: ID
+  notificationId: ID
   notificationUserId: String!
   notificationCategory: String!
   notificationContents: String!
 }
 
-type sns @motel {
-  snsId: ID!
+type sns @model {
+  id: ID
   snsParentsId: String!
+  snsTitle: String!
   snsContents: String!
   snsAuthor: String!
 }
