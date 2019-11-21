@@ -125,7 +125,13 @@ export default function SimpleTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <Connect query={graphqlOperation(queries.listGoalinformations)}>
+        <Connect
+          query={graphqlOperation(queries.listGoalinformations, {
+            filter: {
+              userid: { eq: Auth.user.username }
+            }
+          })}
+        >
           {({ data: { listGoalinformations }, loading, errors }) => {
             console.log("err", errors);
             console.log("data", { listGoalinformations });
@@ -141,25 +147,6 @@ export default function SimpleTabs() {
             );
           }}
         </Connect>
-
-        <Divider />
-        <Card className={classes2.card}>
-          <CardContent>
-            <Typography
-              className={classes2.title}
-              color="textSecondary"
-              gutterBottom
-            >
-              <ListItem
-                button
-                onClick={event => history.push("/sinncyokukannri")}
-              >
-                <ListItemText primary="情報処理安全確保支援士" />
-              </ListItem>
-            </Typography>
-          </CardContent>
-        </Card>
-        <Divider />
       </TabPanel>
 
       <TabPanel value={value} index={1}>

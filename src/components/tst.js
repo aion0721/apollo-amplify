@@ -28,7 +28,11 @@ class App extends Component {
         <br></br>
         <br></br>
         <br></br>
-        <Connect query={graphqlOperation(queries.listTodos)}>
+        <Connect
+          query={graphqlOperation(
+            queries.listTodos((userid: Auth.user.userid))
+          )}
+        >
           {({ data: { listTodos }, loading, errors }) => {
             console.log("err", errors);
             console.log("data", { listTodos });
