@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from "react";
-
-const items = [["a", "b"], "tst1", "tst2h"];
+import React, { useEffect } from "react";
 
 function Card(props) {
-  const [data, setData] = useState();
-  useEffect(() => {
-    setData(props);
-  }, [props]);
+  useEffect(() => {}, [props]);
 
   //  const propsItems = Objecrt.keys(props.map(item => <div>{item}</div>);
   console.log(props);

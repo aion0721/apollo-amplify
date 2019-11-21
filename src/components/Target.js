@@ -44,10 +44,6 @@ const division = [
   { name: "その他", 取得者: 50 }
 ];
 
-function showTodo() {
-  return alert("a");
-}
-
 function Top() {
   const classes = useStyles();
 

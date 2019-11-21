@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core";
 
 import { Auth, API, graphqlOperation } from "aws-amplify";
-import { getTodo, listTodos } from "../graphql/queries";
-import Card from "./molecules/Card";
+import { listTodos } from "../graphql/queries";
 
 import { Connect } from "aws-amplify-react";
 
