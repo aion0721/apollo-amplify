@@ -95,11 +95,21 @@ function App() {
               component={mokuhyouichirann}
             />
             <Route exact path="/mokuhyoukannri" component={mokuhyoukannri} />
+            <Route
+              exact
+              path="/mokuhyoukannri/:targetid"
+              component={mokuhyoukannri}
+            />
             <Route exact path="/notification" component={notification} />
             <Route exact path="/profile" component={profile} />
             <Route exact path="/resistersns" component={resistersns} />
             <Route exact path="/snsOverview" component={snsOverview} />
             <Route exact path="/targetRegistry" component={targetRegistry} />
+            <Route
+              exact
+              path="/sinncyokukannri/:targetid"
+              component={sinncyokukannri}
+            />
             <Route exact path="/sinncyokukannri" component={sinncyokukannri} />
             <Route exact path="/" component={mokuhyouichirann} />
             <Route exact path="/logout" component={logout} />

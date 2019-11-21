@@ -69,6 +69,7 @@ export const onDeleteUserinformation = `subscription OnDeleteUserinformation {
 `;
 export const onCreateGoalinformation = `subscription OnCreateGoalinformation {
   onCreateGoalinformation {
+    id
     userid
     goalName
     goalTestDate
@@ -80,6 +81,7 @@ export const onCreateGoalinformation = `subscription OnCreateGoalinformation {
 `;
 export const onUpdateGoalinformation = `subscription OnUpdateGoalinformation {
   onUpdateGoalinformation {
+    id
     userid
     goalName
     goalTestDate
@@ -91,6 +93,7 @@ export const onUpdateGoalinformation = `subscription OnUpdateGoalinformation {
 `;
 export const onDeleteGoalinformation = `subscription OnDeleteGoalinformation {
   onDeleteGoalinformation {
+    id
     userid
     goalName
     goalTestDate
@@ -157,6 +160,63 @@ export const onDeleteExam = `subscription OnDeleteExam {
   onDeleteExam {
     examId
     examName
+  }
+}
+`;
+export const onCreateNotification = `subscription OnCreateNotification {
+  onCreateNotification {
+    notificationId
+    notificationUserId
+    notificationCategory
+    notificationContents
+  }
+}
+`;
+export const onUpdateNotification = `subscription OnUpdateNotification {
+  onUpdateNotification {
+    notificationId
+    notificationUserId
+    notificationCategory
+    notificationContents
+  }
+}
+`;
+export const onDeleteNotification = `subscription OnDeleteNotification {
+  onDeleteNotification {
+    notificationId
+    notificationUserId
+    notificationCategory
+    notificationContents
+  }
+}
+`;
+export const onCreateSns = `subscription OnCreateSns {
+  onCreateSns {
+    snsId
+    snsParentsId
+    snsTitle
+    snsContents
+    snsAuthor
+  }
+}
+`;
+export const onUpdateSns = `subscription OnUpdateSns {
+  onUpdateSns {
+    snsId
+    snsParentsId
+    snsTitle
+    snsContents
+    snsAuthor
+  }
+}
+`;
+export const onDeleteSns = `subscription OnDeleteSns {
+  onDeleteSns {
+    snsId
+    snsParentsId
+    snsTitle
+    snsContents
+    snsAuthor
   }
 }
 `;

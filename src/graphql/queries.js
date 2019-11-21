@@ -61,6 +61,7 @@ export const listUserinformations = `query ListUserinformations(
 `;
 export const getGoalinformation = `query GetGoalinformation($id: ID!) {
   getGoalinformation(id: $id) {
+    id
     userid
     goalName
     goalTestDate
@@ -77,6 +78,7 @@ export const listGoalinformations = `query ListGoalinformations(
 ) {
   listGoalinformations(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
+      id
       userid
       goalName
       goalTestDate
@@ -141,6 +143,54 @@ export const listExams = `query ListExams(
     items {
       examId
       examName
+    }
+    nextToken
+  }
+}
+`;
+export const getNotification = `query GetNotification($id: ID!) {
+  getNotification(id: $id) {
+    notificationId
+    notificationUserId
+    notificationCategory
+    notificationContents
+  }
+}
+`;
+export const listNotifications = `query ListNotifications(
+  $filter: ModelnotificationFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listNotifications(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      notificationId
+      notificationUserId
+      notificationCategory
+      notificationContents
+    }
+    nextToken
+  }
+}
+`;
+export const getSns = `query GetSns($id: ID!) {
+  getSns(id: $id) {
+    snsId
+    snsParentsId
+    snsTitle
+    snsContents
+    snsAuthor
+  }
+}
+`;
+export const listSnss = `query ListSnss($filter: ModelsnsFilterInput, $limit: Int, $nextToken: String) {
+  listSnss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      snsId
+      snsParentsId
+      snsTitle
+      snsContents
+      snsAuthor
     }
     nextToken
   }
