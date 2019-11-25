@@ -109,9 +109,9 @@ export default function SimpleTabs() {
     <div className={classes.root}>
       <Connect
         query={graphqlOperation(queries.listSnss, {
-          filter: {
-            snsParentsId: { eq: "-" }
-          }
+          //  filter: {
+          //    userid: { eq: Auth.user.username }
+          //  }
         })}
       >
         {({ data: { listSnss }, loading, errors }) => {
@@ -129,7 +129,6 @@ export default function SimpleTabs() {
           );
         }}
       </Connect>
-
       <br></br>
       <ListItem button onClick={event => history.push("/resistersns")}>
         <Button
