@@ -24,7 +24,7 @@ async function sampleMutation(username, title, contents) {
     snsParentsId: "-",
     snsTitle: title,
     snsContents: contents,
-    snsAuthor: username
+    snsAuthor: "-"
   };
 
   await console.log(inputData);
