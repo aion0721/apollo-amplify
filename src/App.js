@@ -25,12 +25,14 @@ import profile from "./components/templates/profile";
 import resistersns from "./components/templates/resistersns";
 import sinncyokukannri from "./components/templates/sinncyokukannri";
 import targetRegistry from "./components/templates/targetRegistry";
+import comentsSns from "./components/templates/comentsSns";
 
 import targetRegistryNew from "./components/templates/targetRegistryNew";
 import targetRegistryMod from "./components/templates/targetRegistryMod";
 import confirmgoukakuki from "./components/templates/confirmgoukakuki";
 import goukakukiichirann from "./components/templates/goukakukiichirann";
 import goukakukiNew from "./components/templates/goukakukiNew";
+import threads from "./components/templates/threads";
 import Top from "./components/templates/Top";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -86,6 +88,7 @@ function App() {
         <Router>
           <Header />
           <Switch>
+            <Route exact path="/" component={mokuhyoukannri} />
             <Route exact path="/confirmprofile" component={confirmprofile} />
             <Route
               exact
@@ -142,8 +145,9 @@ function App() {
               component={sinncyokukannri}
             />
             <Route exact path="/sinncyokukannri" component={sinncyokukannri} />
-            <Route exact path="/" component={mokuhyouichirann} />
             <Route exact path="/logout" component={logout} />
+            <Route exact path="/threads/:threadsid" component={threads} />
+            <Route exact path="/comentsSns/:snsid" component={comentsSns} />
           </Switch>
         </Router>
       </div>

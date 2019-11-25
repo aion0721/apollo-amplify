@@ -82,7 +82,7 @@ function ListView({ snss }) {
               gutterBottom
             >
               <Link
-                onClick={() => history.push("./threads?" + sns.id)}
+                onClick={() => history.push("./threads/" + sns.id)}
                 className={classes3.link}
               >
                 {sns.snsTitle}
@@ -107,9 +107,7 @@ export default function SimpleTabs() {
     <div className={classes.root}>
       <Connect
         query={graphqlOperation(queries.listSnss, {
-          //  filter: {
-          //    userid: { eq: Auth.user.username }
-          //  }
+          limit: 100
         })}
       >
         {({ data: { listSnss }, loading, errors }) => {
