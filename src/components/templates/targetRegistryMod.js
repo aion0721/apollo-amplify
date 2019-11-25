@@ -6,11 +6,15 @@ import Container from "@material-ui/core/Container";
 import NativeSelect from "@material-ui/core/NativeSelect";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+
+import { Connect } from "aws-amplify-react";
+import * as queries from "./../../graphql/queries";
 
 import { Auth, API, graphqlOperation } from "aws-amplify";
-import * as mutations from "./../../graphql/mutations";
+import * as mutations from "../../graphql/mutations";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -39,6 +43,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 async function sampleMutation(
+  id,
   userid,
   username,
   division,
@@ -49,6 +54,7 @@ async function sampleMutation(
   comments
 ) {
   const inputData = {
+    id: id,
     userid: userid,
     name: username,
     division: division,
@@ -58,24 +64,25 @@ async function sampleMutation(
     interestArea3: int3,
     comments: comments
   };
+
   await console.log(inputData);
   const newTodo = await API.graphql(
-    graphqlOperation(mutations.createUserinformation, { input: inputData })
+    graphqlOperation(mutations.updateUserinformation, { input: inputData })
   );
   await console.log(newTodo);
 }
 
-export default function ComposedTextField() {
+function ListView(targets) {
   const classes = useStyles();
-  const [username, setUsername] = useState();
-  const [division, setDivision] = useState();
-  const [myArea, setMyArea] = useState();
-  const [int1, setInt1] = useState();
-  const [int2, setInt2] = useState();
-  const [int3, setInt3] = useState();
-  const [comments, setComments] = useState();
+  const [username, setUsername] = useState(targets.targets.name);
+  const [division, setDivision] = useState(targets.targets.division);
+  const [myArea, setMyArea] = useState(targets.targets.myArea);
+  const [int1, setInt1] = useState(targets.targets.interestArea1);
+  const [int2, setInt2] = useState(targets.targets.interestArea2);
+  const [int3, setInt3] = useState(targets.targets.interestArea3);
+  const [comments, setComments] = useState(targets.targets.comments);
   const history = useHistory();
-
+  const { profileid } = useParams();
   return (
     <Container className={classes.container}>
       <div className={classes.div1}>
@@ -86,6 +93,7 @@ export default function ComposedTextField() {
           placeholder="英数字を含んだ4文字以上で入力してください"
           fullWidth
           margin="normal"
+          defaultValue={username}
           InputLabelProps={{
             shrink: true
           }}
@@ -94,6 +102,7 @@ export default function ComposedTextField() {
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="age-native-helper">所属部署</InputLabel>
           <NativeSelect
+            defaultValue={division}
             inputProps={{
               name: "age",
               id: "age-native-helper"
@@ -114,6 +123,7 @@ export default function ComposedTextField() {
         <FormControl className={classes.formControl}>
           <InputLabel htmlFor="age-native-helper">担当エリア</InputLabel>
           <NativeSelect
+            defaultValue={myArea}
             inputProps={{
               name: "age",
               id: "age-native-helper"
@@ -132,6 +142,7 @@ export default function ComposedTextField() {
           style={{ margin: 8 }}
           fullWidth
           margin="normal"
+          defaultValue={int1}
           InputLabelProps={{
             shrink: true
           }}
@@ -143,6 +154,7 @@ export default function ComposedTextField() {
           style={{ margin: 8 }}
           fullWidth
           margin="normal"
+          defaultValue={int2}
           InputLabelProps={{
             shrink: true
           }}
@@ -154,6 +166,7 @@ export default function ComposedTextField() {
           style={{ margin: 8 }}
           fullWidth
           margin="normal"
+          defaultValue={int3}
           InputLabelProps={{
             shrink: true
           }}
@@ -168,6 +181,7 @@ export default function ComposedTextField() {
           placeholder="プロフィールや経歴などを入力してください"
           fullWidth
           margin="normal"
+          defaultValue={comments}
           InputLabelProps={{
             shrink: true
           }}
@@ -180,6 +194,7 @@ export default function ComposedTextField() {
           className={classes.button}
           onClick={() => {
             sampleMutation(
+              profileid,
               Auth.user.username,
               username,
               division,
@@ -189,13 +204,42 @@ export default function ComposedTextField() {
               int3,
               comments
             );
-            alert("登録しました!!");
+            alert("修正しました!!");
             history.push("/confirmprofile");
           }}
         >
-          プロフィールを登録
+          プロフィールを更新
         </Button>
       </div>
     </Container>
+  );
+}
+
+export default function ComposedTextField() {
+  const { profileid } = useParams();
+  return (
+    <div>
+      {console.log("profileid" + profileid)}
+      <Connect
+        query={graphqlOperation(queries.getUserinformation, {
+          id: profileid
+        })}
+      >
+        {({ data: { getUserinformation }, loading, errors }) => {
+          console.log("err", errors);
+          console.log("data", { getUserinformation });
+          console.log("loading", loading);
+          errors = false;
+          if (errors) return <h3>Error</h3>;
+          if (loading || !getUserinformation) return <CircularProgress />;
+          return (
+            <div>
+              {console.log("alert")}
+              <ListView targets={getUserinformation} />
+            </div>
+          );
+        }}
+      </Connect>
+    </div>
   );
 }

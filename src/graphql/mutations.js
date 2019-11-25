@@ -30,40 +30,43 @@ export const deleteTodo = `mutation DeleteTodo($input: DeleteTodoInput!) {
 `;
 export const createUserinformation = `mutation CreateUserinformation($input: CreateUserinformationInput!) {
   createUserinformation(input: $input) {
+    id
     userid
     name
-    joinYear
-    organization
+    division
+    myArea
     interestArea1
     interestArea2
     interestArea3
-    profile
+    comments
   }
 }
 `;
 export const updateUserinformation = `mutation UpdateUserinformation($input: UpdateUserinformationInput!) {
   updateUserinformation(input: $input) {
+    id
     userid
     name
-    joinYear
-    organization
+    division
+    myArea
     interestArea1
     interestArea2
     interestArea3
-    profile
+    comments
   }
 }
 `;
 export const deleteUserinformation = `mutation DeleteUserinformation($input: DeleteUserinformationInput!) {
   deleteUserinformation(input: $input) {
+    id
     userid
     name
-    joinYear
-    organization
+    division
+    myArea
     interestArea1
     interestArea2
     interestArea3
-    profile
+    comments
   }
 }
 `;
