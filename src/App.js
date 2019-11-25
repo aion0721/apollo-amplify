@@ -26,6 +26,12 @@ import resistersns from "./components/templates/resistersns";
 import sinncyokukannri from "./components/templates/sinncyokukannri";
 import targetRegistry from "./components/templates/targetRegistry";
 
+import targetRegistryNew from "./components/templates/targetRegistryNew";
+import confirmgoukakuki from "./components/templates/confirmgoukakuki";
+import goukakukiichirann from "./components/templates/goukakukiichirann";
+import goukakukiNew from "./components/templates/goukakukiNew";
+import Top from "./components/templates/Top";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 // serviceWorker
@@ -104,6 +110,25 @@ function App() {
             <Route exact path="/profile" component={profile} />
             <Route exact path="/resistersns" component={resistersns} />
             <Route exact path="/snsOverview" component={snsOverview} />
+            <Route
+              exact
+              path="/confirmgoukakuki"
+              component={confirmgoukakuki}
+            />
+            <Route exact path="/goukakukiNew" component={goukakukiNew} />
+            <Route
+              exact
+              path="/goukakukiichirann"
+              component={goukakukiichirann}
+            />
+            <Route
+              exact
+              path="/targetRegistryNew"
+              component={targetRegistryNew}
+            />
+            <Route exact path="/targetRegistry" component={targetRegistry} />
+            <Route exact path="/Top" component={Top} />
+
             <Route exact path="/targetRegistry" component={targetRegistry} />
             <Route
               exact

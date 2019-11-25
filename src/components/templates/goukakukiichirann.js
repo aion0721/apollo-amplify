@@ -7,6 +7,10 @@ import CardContent from "@material-ui/core/CardContent";
 import Link from "@material-ui/core/Link";
 import Divider from "@material-ui/core/Divider";
 
+import ListItem from "@material-ui/core/ListItem";
+import { useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -63,6 +67,7 @@ export default function SimpleTabs() {
   const classes2 = useStyles2();
   const classes3 = useStyles3();
   const preventDefault = event => event.preventDefault();
+  const history = useHistory();
 
   return (
     <div className={classes.root}>
@@ -126,6 +131,17 @@ export default function SimpleTabs() {
         </div>
       </Card>
       <Divider />
+      <br></br>
+      <ListItem button onClick={event => history.push("/goukakukiNew")}>
+        <Button
+          variant="contained"
+          size="large"
+          color="primary"
+          className={classes.margin}
+        >
+          合格体験記を投稿する
+        </Button>
+      </ListItem>
     </div>
   );
 }

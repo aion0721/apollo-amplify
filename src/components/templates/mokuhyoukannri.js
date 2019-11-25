@@ -81,7 +81,7 @@ function ListView({ targets }) {
   return (
     <div>
       {(() => {
-        if (targets.length == 0) {
+        if (targets.length === 0) {
           return (
             <Card>
               <CardContent>
