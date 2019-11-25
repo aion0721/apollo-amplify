@@ -73,7 +73,7 @@ export default function DatePickers() {
           }}
         />
         　 <br></br>
-        <ListItem button onClick={event => history.push("/goukakuki")}>
+        <ListItem button onClick={event => history.push("/goukakukiNew")}>
           <Button
             variant="contained"
             size="large"

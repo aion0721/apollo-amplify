@@ -114,11 +114,11 @@ function Header() {
           <ListItemIcon>
             <InsertChartIcon />
           </ListItemIcon>
-          <ListItemText primary="コミュニティスレッド" />
+          <ListItemText primary="コミュニティ" />
         </ListItem>
       </List>
 
-      <ListItem button key="goukakuki" onClick={menuClick("goukakuki?sns")}>
+      <ListItem button key="goukakuki" onClick={menuClick("goukakukiichirann")}>
         <ListItemIcon>
           <InsertCommentIcon />
         </ListItemIcon>

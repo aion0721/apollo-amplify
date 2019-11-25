@@ -8,6 +8,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
   purpleAvatar: {
@@ -29,6 +30,7 @@ const useStyles2 = makeStyles(theme => ({
 export default function LetterAvatars() {
   const classes = useStyles();
   const classes2 = useStyles2();
+  const history = useHistory();
 
   return (
     <div>
@@ -79,6 +81,9 @@ export default function LetterAvatars() {
         size="large"
         color="primary"
         className={classes2.margin}
+        onClick={() => {
+          history.push("/targetRegistryNew");
+        }}
       >
         修正する
       </Button>

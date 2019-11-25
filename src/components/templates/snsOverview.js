@@ -5,12 +5,11 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Link from "@material-ui/core/Link";
-import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
 
-import Amplify, { Auth, graphqlOperation } from "aws-amplify";
+import Amplify, { graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
 import * as queries from "../../graphql/queries";
 import awsconfig from "../../aws-exports";
@@ -68,7 +67,6 @@ const useStyles3 = makeStyles(theme => ({
 }));
 
 function ListView({ snss }) {
-  const classes = useStyles();
   const classes2 = useStyles2();
   const classes3 = useStyles3();
   const history = useHistory();
@@ -84,7 +82,7 @@ function ListView({ snss }) {
               gutterBottom
             >
               <Link
-                onClick={() => history.push("./threads?" + sns.snsId)}
+                onClick={() => history.push("./threads?" + sns.id)}
                 className={classes3.link}
               >
                 {sns.snsTitle}

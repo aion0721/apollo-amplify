@@ -50,6 +50,7 @@ async function sampleMutation(userid, targetName, targetDate, targetTime) {
   const newTodo = await API.graphql(
     graphqlOperation(mutations.createGoalinformation, { input: inputData })
   );
+  console.log(newTodo);
 }
 
 export default function DatePickers() {
