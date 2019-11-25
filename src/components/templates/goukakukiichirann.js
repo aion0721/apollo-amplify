@@ -11,6 +11,12 @@ import ListItem from "@material-ui/core/ListItem";
 import { useHistory } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
+import Amplify, { graphqlOperation } from "aws-amplify";
+import { Connect } from "aws-amplify-react";
+import * as queries from "../../graphql/queries";
+import awsconfig from "../../aws-exports";
+Amplify.configure(awsconfig);
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -62,74 +68,68 @@ const useStyles3 = makeStyles(theme => ({
   }
 }));
 
+function ListView({ goukakukis }) {
+  const classes2 = useStyles2();
+  const classes3 = useStyles3();
+  const history = useHistory();
+
+  return (
+    <div>
+      {goukakukis.map(goukakuki => (
+        <Card className={classes2.card}>
+          <CardContent>
+            <Typography
+              className={classes2.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              <Link
+                className={classes3.link}
+                onClick={() =>
+                  history.push("./goukakukiDetail/" + goukakuki.id)
+                }
+              >
+                {goukakuki.goukakukiTitle}
+              </Link>
+              <br></br>
+            </Typography>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
 export default function SimpleTabs() {
   const classes = useStyles();
   const classes2 = useStyles2();
   const classes3 = useStyles3();
-  const preventDefault = event => event.preventDefault();
   const history = useHistory();
 
   return (
     <div className={classes.root}>
-      <Card className={classes2.card}>
-        <CardContent>
-          <Typography
-            className={classes2.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            <Link href="#" onClick={preventDefault} className={classes3.link}>
-              {"基本情報受かったよー(Tytle1)"}
-            </Link>
-            <br></br>
-          </Typography>
-        </CardContent>
-        <div className={classes3.div1}>
-          ユーザー名：
-          <br></br>
-          投稿日時:
-        </div>
-      </Card>
+      <Connect
+        query={graphqlOperation(queries.listGoukakukis, {
+          limit: 100
+        })}
+      >
+        {({ data: { listGoukakukis }, loading, errors }) => {
+          console.log("err", errors);
+          console.log("data", { listGoukakukis });
+          console.log("loading", loading);
+          errors = false;
+          if (errors) return <h3>Error</h3>;
+          if (loading || !listGoukakukis) return <h3>Loading...</h3>;
+          return (
+            <div>
+              {console.log("alert")}
+              <ListView goukakukis={listGoukakukis.items} />
+            </div>
+          );
+        }}
+      </Connect>
 
       <Divider />
-      <Card className={classes2.card}>
-        <CardContent>
-          <Typography
-            className={classes2.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            <Link href="#" onClick={preventDefault} className={classes3.link}>
-              {"基本情報簡単だったよー(Tytle2)"}
-            </Link>
-          </Typography>
-        </CardContent>
-        <div className={classes3.div1}>
-          ユーザー名：
-          <br></br>
-          投稿日時:
-        </div>
-      </Card>
-      <Divider />
-
-      <Card className={classes2.card}>
-        <CardContent>
-          <Typography
-            className={classes2.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            <Link href="#" onClick={preventDefault} className={classes3.link}>
-              {"基本情報試験余裕！(Tytle3)"}
-            </Link>
-          </Typography>
-        </CardContent>
-        <div className={classes3.div1}>
-          ユーザー名：
-          <br></br>
-          投稿日時:
-        </div>
-      </Card>
       <Divider />
       <br></br>
       <ListItem button onClick={event => history.push("/goukakukiNew")}>
