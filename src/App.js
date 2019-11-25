@@ -26,6 +26,7 @@ import resistersns from "./components/templates/resistersns";
 import sinncyokukannri from "./components/templates/sinncyokukannri";
 import targetRegistry from "./components/templates/targetRegistry";
 import comentsSns from "./components/templates/comentsSns";
+import goukakukiDetail from "./components/templates/goukakukiDetail";
 
 import targetRegistryNew from "./components/templates/targetRegistryNew";
 import targetRegistryMod from "./components/templates/targetRegistryMod";
@@ -148,6 +149,11 @@ function App() {
             <Route exact path="/logout" component={logout} />
             <Route exact path="/threads/:threadsid" component={threads} />
             <Route exact path="/comentsSns/:snsid" component={comentsSns} />
+            <Route
+              exact
+              path="/goukakukiDetail/:goukakukiid"
+              component={goukakukiDetail}
+            />
           </Switch>
         </Router>
       </div>

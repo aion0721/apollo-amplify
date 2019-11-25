@@ -226,3 +226,39 @@ export const onDeleteSns = `subscription OnDeleteSns {
   }
 }
 `;
+export const onCreateGoukakuki = `subscription OnCreateGoukakuki {
+  onCreateGoukakuki {
+    id
+    goukakukiTitle
+    targetName
+    totalTime
+    useText
+    comments
+    userid
+  }
+}
+`;
+export const onUpdateGoukakuki = `subscription OnUpdateGoukakuki {
+  onUpdateGoukakuki {
+    id
+    goukakukiTitle
+    targetName
+    totalTime
+    useText
+    comments
+    userid
+  }
+}
+`;
+export const onDeleteGoukakuki = `subscription OnDeleteGoukakuki {
+  onDeleteGoukakuki {
+    id
+    goukakukiTitle
+    targetName
+    totalTime
+    useText
+    comments
+    userid
+  }
+}
+`;
