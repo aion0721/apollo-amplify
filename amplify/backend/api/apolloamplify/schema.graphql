@@ -6,14 +6,15 @@ type Todo @model {
 }
 
 type userinformation @model {
-  userid: ID!
+  id: ID
+  userid: String!
   name: String!
-  joinYear: String!
-  organization: String!
+  division: String!
+  myArea: String!
   interestArea1: String!
   interestArea2: String
   interestArea3: String
-  profile: String!
+  comments: String
 }
 
 type goalinformation @model {

@@ -30,40 +30,43 @@ export const onDeleteTodo = `subscription OnDeleteTodo {
 `;
 export const onCreateUserinformation = `subscription OnCreateUserinformation {
   onCreateUserinformation {
+    id
     userid
     name
-    joinYear
-    organization
+    division
+    myArea
     interestArea1
     interestArea2
     interestArea3
-    profile
+    comments
   }
 }
 `;
 export const onUpdateUserinformation = `subscription OnUpdateUserinformation {
   onUpdateUserinformation {
+    id
     userid
     name
-    joinYear
-    organization
+    division
+    myArea
     interestArea1
     interestArea2
     interestArea3
-    profile
+    comments
   }
 }
 `;
 export const onDeleteUserinformation = `subscription OnDeleteUserinformation {
   onDeleteUserinformation {
+    id
     userid
     name
-    joinYear
-    organization
+    division
+    myArea
     interestArea1
     interestArea2
     interestArea3
-    profile
+    comments
   }
 }
 `;

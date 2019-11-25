@@ -27,6 +27,7 @@ import sinncyokukannri from "./components/templates/sinncyokukannri";
 import targetRegistry from "./components/templates/targetRegistry";
 
 import targetRegistryNew from "./components/templates/targetRegistryNew";
+import targetRegistryMod from "./components/templates/targetRegistryMod";
 import confirmgoukakuki from "./components/templates/confirmgoukakuki";
 import goukakukiichirann from "./components/templates/goukakukiichirann";
 import goukakukiNew from "./components/templates/goukakukiNew";
@@ -125,6 +126,11 @@ function App() {
               exact
               path="/targetRegistryNew"
               component={targetRegistryNew}
+            />
+            <Route
+              exact
+              path="/targetRegistryMod/:profileid"
+              component={targetRegistryMod}
             />
             <Route exact path="/targetRegistry" component={targetRegistry} />
             <Route exact path="/Top" component={Top} />

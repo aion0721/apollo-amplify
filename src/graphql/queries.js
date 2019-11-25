@@ -28,14 +28,15 @@ export const listTodos = `query ListTodos(
 `;
 export const getUserinformation = `query GetUserinformation($id: ID!) {
   getUserinformation(id: $id) {
+    id
     userid
     name
-    joinYear
-    organization
+    division
+    myArea
     interestArea1
     interestArea2
     interestArea3
-    profile
+    comments
   }
 }
 `;
@@ -46,14 +47,15 @@ export const listUserinformations = `query ListUserinformations(
 ) {
   listUserinformations(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
+      id
       userid
       name
-      joinYear
-      organization
+      division
+      myArea
       interestArea1
       interestArea2
       interestArea3
-      profile
+      comments
     }
     nextToken
   }
