@@ -13,6 +13,8 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { Divider } from "@material-ui/core";
 
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 import Amplify, { Auth, graphqlOperation } from "aws-amplify";
 import { Connect } from "aws-amplify-react";
 import * as queries from "../../graphql/queries";
@@ -78,24 +80,42 @@ function ListView({ targets }) {
   const history = useHistory();
   return (
     <div>
-      {targets.map(target => (
-        <Card className={classes2.card}>
-          <CardContent>
-            <Typography
-              className={classes2.title}
-              color="textSecondary"
-              gutterBottom
-            >
-              <ListItem
-                button
-                onClick={() => history.push("/sinncyokukannri/" + target.id)}
-              >
-                <ListItemText primary={target.goalName} />
-              </ListItem>
-            </Typography>
-          </CardContent>
-        </Card>
-      ))}
+      {(() => {
+        if (targets.length == 0) {
+          return (
+            <Card>
+              <CardContent>
+                <ListItem onClick={() => history.push("/profile")}>
+                  <ListItemText>
+                    まだ何も登録されていません。登録してみましょう。
+                  </ListItemText>
+                </ListItem>
+              </CardContent>
+            </Card>
+          );
+        } else {
+          return targets.map(target => (
+            <Card className={classes2.card}>
+              <CardContent>
+                <Typography
+                  className={classes2.title}
+                  color="textSecondary"
+                  gutterBottom
+                >
+                  <ListItem
+                    button
+                    onClick={() =>
+                      history.push("/sinncyokukannri/" + target.id)
+                    }
+                  >
+                    <ListItemText primary={target.goalName} />
+                  </ListItem>
+                </Typography>
+              </CardContent>
+            </Card>
+          ));
+        }
+      })()}
     </div>
   );
 }
@@ -138,7 +158,7 @@ export default function SimpleTabs() {
             console.log("loading", loading);
             errors = false;
             if (errors) return <h3>Error</h3>;
-            if (loading || !listGoalinformations) return <h3>Loading...</h3>;
+            if (loading || !listGoalinformations) return <CircularProgress />;
             return (
               <div>
                 {console.log("alert")}

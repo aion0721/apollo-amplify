@@ -150,6 +150,7 @@ export const listExams = `query ListExams(
 `;
 export const getNotification = `query GetNotification($id: ID!) {
   getNotification(id: $id) {
+    id
     notificationId
     notificationUserId
     notificationCategory
@@ -164,6 +165,7 @@ export const listNotifications = `query ListNotifications(
 ) {
   listNotifications(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
+      id
       notificationId
       notificationUserId
       notificationCategory
@@ -175,7 +177,7 @@ export const listNotifications = `query ListNotifications(
 `;
 export const getSns = `query GetSns($id: ID!) {
   getSns(id: $id) {
-    snsId
+    id
     snsParentsId
     snsTitle
     snsContents
@@ -186,7 +188,7 @@ export const getSns = `query GetSns($id: ID!) {
 export const listSnss = `query ListSnss($filter: ModelsnsFilterInput, $limit: Int, $nextToken: String) {
   listSnss(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      snsId
+      id
       snsParentsId
       snsTitle
       snsContents
