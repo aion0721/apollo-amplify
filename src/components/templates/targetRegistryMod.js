@@ -219,7 +219,6 @@ export default function ComposedTextField() {
   const { profileid } = useParams();
   return (
     <div>
-      {console.log("profileid" + profileid)}
       <Connect
         query={graphqlOperation(queries.getUserinformation, {
           id: profileid
