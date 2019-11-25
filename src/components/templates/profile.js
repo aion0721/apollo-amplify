@@ -75,13 +75,8 @@ export default function DatePickers() {
             value={targetName}
           >
             <option value="" />
-<<<<<<< HEAD
-            <option value={"基本情報技術者"}>基本情報処理技術者試験</option>
-            <option value={"応用情報技術者"}>応用情報処理技術者試験</option>
-=======
             <option value={"基本情報技術者試験"}>基本情報処理技術者試験</option>
             <option value={"応用情報技術者試験"}>応用情報処理技術者試験</option>
->>>>>>> da656cc9fe4f9063460e1c43abe685275d33be83
             <option value={"ITストラテジスト試験"}>ITストラテジスト試験</option>
           </NativeSelect>
         </FormControl>
