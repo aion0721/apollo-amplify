@@ -226,3 +226,39 @@ export const deleteSns = `mutation DeleteSns($input: DeleteSnsInput!) {
   }
 }
 `;
+export const createGoukakuki = `mutation CreateGoukakuki($input: CreateGoukakukiInput!) {
+  createGoukakuki(input: $input) {
+    id
+    goukakukiTitle
+    targetName
+    totalTime
+    useText
+    comments
+    userid
+  }
+}
+`;
+export const updateGoukakuki = `mutation UpdateGoukakuki($input: UpdateGoukakukiInput!) {
+  updateGoukakuki(input: $input) {
+    id
+    goukakukiTitle
+    targetName
+    totalTime
+    useText
+    comments
+    userid
+  }
+}
+`;
+export const deleteGoukakuki = `mutation DeleteGoukakuki($input: DeleteGoukakukiInput!) {
+  deleteGoukakuki(input: $input) {
+    id
+    goukakukiTitle
+    targetName
+    totalTime
+    useText
+    comments
+    userid
+  }
+}
+`;

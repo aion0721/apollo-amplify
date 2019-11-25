@@ -58,3 +58,13 @@ type sns @model {
   snsContents: String!
   snsAuthor: String!
 }
+
+type goukakuki @model {
+  id: ID
+  goukakukiTitle: String
+  targetName: String
+  totalTime: String
+  useText: String
+  comments: String
+  userid: String
+}

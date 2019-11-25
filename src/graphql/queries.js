@@ -200,3 +200,34 @@ export const listSnss = `query ListSnss($filter: ModelsnsFilterInput, $limit: In
   }
 }
 `;
+export const getGoukakuki = `query GetGoukakuki($id: ID!) {
+  getGoukakuki(id: $id) {
+    id
+    goukakukiTitle
+    targetName
+    totalTime
+    useText
+    comments
+    userid
+  }
+}
+`;
+export const listGoukakukis = `query ListGoukakukis(
+  $filter: ModelgoukakukiFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listGoukakukis(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      goukakukiTitle
+      targetName
+      totalTime
+      useText
+      comments
+      userid
+    }
+    nextToken
+  }
+}
+`;
