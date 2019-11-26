@@ -9,6 +9,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
+import Link from "@material-ui/core/Link";
 
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Amplify, { Auth, graphqlOperation } from "aws-amplify";
@@ -43,9 +44,9 @@ function ListView({ targets }) {
       {(() => {
         if (targets.length === 0) {
           return (
-            <h1 onClick={() => history.push("/targetRegistryNew")}>
+            <Link onClick={() => history.push("/targetRegistryNew")}>
               まだ何も登録されていません。登録してみましょう。
-            </h1>
+            </Link>
           );
         } else {
           return targets.map(target => (
